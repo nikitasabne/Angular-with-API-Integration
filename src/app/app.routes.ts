@@ -3,8 +3,8 @@ import { UserComponent } from './Component/user/user.component';
 import { AdminComponent } from './Component/admin/admin.component';
 import { DataBindingComponent } from './Component/data-binding/data-binding.component';
 import { ControlFlowComponent } from './Component/control-flow/control-flow.component';
-import { GetAPIComponent } from './Component/get-api/get-api.component';
 import { CreateUserComponent } from './Component/create-user/create-user.component';
+import { RegionComponent } from './Component/region/region.component';
 
 export const routes: Routes = [
   {
@@ -24,11 +24,11 @@ export const routes: Routes = [
     component: ControlFlowComponent,
   },
   {
-    path: 'get-api',
-    component: GetAPIComponent,
-  },
-  {
     path: 'create-user',
     component: CreateUserComponent,
+  },
+  {
+    path: 'region',
+    component: RegionComponent,
   },
 ];
