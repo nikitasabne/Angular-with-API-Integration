@@ -1,0 +1,62 @@
+<div class="row">
+  @if(divVisible == "yes"){
+  <div class="col-3">
+    <div class="bg-success p-3">Course is available</div>
+  </div>
+  }@else{
+  <div class="col-3">
+    <div class="bg-success p-3">No course available</div>
+  </div>
+  }
+  <div class="col-3">
+    <div class="bg-success p-3">Course2</div>
+  </div>
+  <div class="col-3">
+    <div class="bg-success p-3">Course3</div>
+  </div>
+</div>
+
+<div class="row pt-3">
+  <div class="col-3 text-center">
+    <button class="bg-success me-2" (click)="IsVisible(false)">Hide</button>
+    <button class="bg-success" (click)="IsVisible(true)">Show</button>
+  </div>
+  <div class="col-3">
+    <input type="text" [(ngModel)]="divVisible" />
+  </div>
+  @if (isVisible == true) {
+  <div class="col-3">
+    <div class="bg-success p-3">Course2</div>
+  </div>
+  <div class="col-3">
+    <div class="bg-success p-3">Course3</div>
+  </div>
+  }
+</div>
+
+<div class="row">
+  <div class="col-3">
+    <input type="text" [(ngModel)]="weekdays" />
+  </div>
+  <div class="col-3">
+    <div class="p-2 bg-secondary text-center">
+      @if (weekdays == 'Mon') {
+      <p class="pt-2">Monday</p>
+      }@else if(weekdays == "Tue"){
+      <p class="pt-2">Tuesday</p>
+      }@else if(weekdays == "Wed"){
+      <p class="pt-2">Wednesday</p>
+      }@else if(weekdays == "Thu"){
+      <p class="pt-2">Thursday</p>
+      }@else if(weekdays == "Fri"){
+      <p class="pt-2">Friday</p>
+      }@else if(weekdays == "Sat"){
+      <p class="pt-2">Saturday</p>
+      }@else if(weekdays == "Sun"){
+      <p class="pt-2">Sunday</p>
+      }@else {
+      <p class="pt-2">Enter valid weekday</p>
+      }
+    </div>
+  </div>
+</div>
