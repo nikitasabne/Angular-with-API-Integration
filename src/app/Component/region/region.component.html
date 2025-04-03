@@ -3,15 +3,27 @@
     @for (item of regionList; track $index) {
     <div class="col">
       <div class="card border-success mb-3" style="max-width: 18rem">
-        <div class="card-header">Header</div>
+        <div class="card-header">Region</div>
         <div class="card-body text-success">
           <h5 class="card-title">{{ item.code }}</h5>
           <p class="card-text">{{ item.name }}</p>
         </div>
         <div class="d-flex justify-content-center mt-1 mb-2">
           <div class="d-inline-flex gap-2">
-            <button type="button" class="btn btn-success btn-sm">Reset</button>
-            <button type="button" class="btn btn-dark btn-sm">Create</button>
+            <button
+              type="button"
+              class="btn btn-success btn-sm"
+              (click)="EditRegion(item)"
+            >
+              Edit
+            </button>
+            <button
+              type="button"
+              class="btn btn-dark btn-sm"
+              (click)="DeleteRegion(item)"
+            >
+              Delete
+            </button>
           </div>
         </div>
       </div>
@@ -24,25 +36,53 @@
       <div class="row mt-3">
         <label class="col-3 col-form-label text-end">Code:</label>
         <div class="col-8">
-          <input type="text" class="form-control" />
+          <input
+            type="text"
+            [(ngModel)]="regionObj.code"
+            class="form-control"
+          />
         </div>
       </div>
       <div class="row mt-3">
         <label class="col-3 col-form-label text-end">Name:</label>
         <div class="col-8">
-          <input type="text" class="form-control" />
+          <input
+            type="text"
+            [(ngModel)]="regionObj.name"
+            class="form-control"
+          />
         </div>
       </div>
       <div class="row mt-3">
         <label class="col-3 col-form-label text-end">Image URL:</label>
         <div class="col-8">
-          <input type="text" class="form-control" />
+          <input
+            type="text"
+            [(ngModel)]="regionObj.regionImageUrl"
+            class="form-control"
+          />
         </div>
       </div>
       <div class="d-flex justify-content-center mt-5">
         <div class="d-inline-flex gap-4">
           <button type="button" class="btn btn-outline-success">Reset</button>
-          <button type="button" class="btn btn-success">Create</button>
+          @if (regionObj.code == '') {
+          <button
+            type="button"
+            class="btn btn-success"
+            (click)="CreateRegion()"
+          >
+            Create
+          </button>
+          }@else {
+          <button
+            type="button"
+            class="btn btn-success"
+            (click)="UpdateRegion()"
+          >
+            Update
+          </button>
+          }
         </div>
       </div>
     </div>
