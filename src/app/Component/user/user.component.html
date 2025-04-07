@@ -1,1 +1,29 @@
-<p>user works!</p>
+<!-- login.component.html -->
+<div class="d-flex justify-content-center align-items-center vh-100 bg-light">
+  <div class="card shadow p-4" style="width: 100%; max-width: 400px">
+    <h4 class="text-center mb-4">Login</h4>
+    <form>
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input
+          type="email"
+          [(ngModel)]="userObj.username"
+          class="form-control"
+          name="username"
+        />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input
+          type="password"
+          [(ngModel)]="userObj.password"
+          class="form-control"
+          name="password"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary w-100" (click)="LoginUser()">
+        Login
+      </button>
+    </form>
+  </div>
+</div>
