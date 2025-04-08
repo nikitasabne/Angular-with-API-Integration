@@ -1,24 +1,38 @@
-<ul class="nav">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">Active</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" routerLink="/user-page">user</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" routerLink="/admin">Admin</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" routerLink="/data-binding">Data</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" routerLink="/control-flow">Control-Flow</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" routerLink="/region">Get Region</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" routerLink="/create-user">Create User</a>
-  </li>
-</ul>
+<div class="d-flex justify-content-between align-items-center px-3">
+  <!-- Left side nav -->
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/user-page">User</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/admin">Admin</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/data-binding">Data</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/control-flow">Control-Flow</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/region">Get Region</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/create-user">Create User</a>
+    </li>
+  </ul>
+  <div class="text-end text-muted me-3 mt-2">
+    Session expires in: {{ sessionTimeLeft }} seconds
+  </div>
+
+  <!-- Right side logout -->
+  <ul class="nav ms-auto">
+    <li class="nav-item">
+      <a class="nav-link text-danger" (click)="logout()">Logout</a>
+    </li>
+  </ul>
+</div>
+
 <router-outlet />

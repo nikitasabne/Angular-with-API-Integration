@@ -38,8 +38,8 @@ export class RegionComponent implements OnInit {
   UpdateRegion() {
     this.regionService.UpdateRegion(this.regionObj).subscribe(() => {
       alert('Region Updated');
+      this.getAllRegion();
     });
-    this.getAllRegion();
   }
 
   DeleteRegion(obj: RegionModel) {

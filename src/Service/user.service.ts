@@ -15,7 +15,6 @@ export class UserService {
   }
 
   LoginUser(obj: LoginUser) {
-    debugger;
     return this.http.post(this.apiUrl + '/Login', obj);
   }
 }
