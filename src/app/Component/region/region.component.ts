@@ -13,9 +13,18 @@ export class RegionComponent implements OnInit {
   regionList: RegionModel[] = [];
   regionService = inject(RegionService);
   regionObj: RegionModel = new RegionModel();
+  RegionImageUrl: File | null = null;
+  selectedFileName: string = 'No file chosen';
 
   ngOnInit(): void {
     this.getAllRegion();
+  }
+
+  onFileSelected(event: any) {
+    this.RegionImageUrl = event.target.files[0];
+    this.selectedFileName = this.RegionImageUrl
+      ? this.RegionImageUrl.name
+      : 'No file chosen';
   }
 
   getAllRegion() {
@@ -25,21 +34,52 @@ export class RegionComponent implements OnInit {
   }
 
   CreateRegion() {
-    this.regionService.SaveRegion(this.regionObj).subscribe();
+    const formData = new FormData();
+    formData.append('code', this.regionObj.code);
+    formData.append('name', this.regionObj.name);
+    if (this.RegionImageUrl) {
+      formData.append('RegionImageUrl', this.RegionImageUrl);
+    }
+    this.regionService.SaveRegion(formData).subscribe({
+      next: (res) => {
+        alert('Region created');
+        this.getAllRegion(); // reload region list
+      },
+      error: (err) => {
+        console.error(err);
+        alert('Error creating region');
+      },
+    });
     this.getAllRegion();
   }
 
-  Reset() {}
+  Reset() {
+    this.regionObj = new RegionModel(); // clear form data
+    this.RegionImageUrl = null;
+  }
 
   EditRegion(data: RegionModel) {
     this.regionObj = data;
   }
 
   UpdateRegion() {
-    this.regionService.UpdateRegion(this.regionObj).subscribe(() => {
-      alert('Region Updated');
-      this.getAllRegion();
+    const formData = new FormData();
+    formData.append('code', this.regionObj.code);
+    formData.append('name', this.regionObj.name);
+    if (this.RegionImageUrl) {
+      formData.append('RegionImageUrl', this.RegionImageUrl);
+    }
+    this.regionService.UpdateRegion(this.regionObj.id, formData).subscribe({
+      next: (res) => {
+        alert('Region Updated');
+        this.getAllRegion(); // reload region list
+      },
+      error: (err) => {
+        console.error(err);
+        alert('Error creating region');
+      },
     });
+    this.getAllRegion();
   }
 
   DeleteRegion(obj: RegionModel) {

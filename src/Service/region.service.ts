@@ -14,12 +14,12 @@ export class RegionService {
     return this.http.get(this.apiUrl);
   }
 
-  SaveRegion(obj: RegionModel) {
-    return this.http.post(this.apiUrl, obj);
+  SaveRegion(formData: FormData) {
+    return this.http.post(this.apiUrl, formData);
   }
 
-  UpdateRegion(obj: RegionModel) {
-    return this.http.put(`${this.apiUrl}/${obj.id}`, obj);
+  UpdateRegion(id: string, formData: FormData) {
+    return this.http.put(`${this.apiUrl}/${id}`, formData);
   }
 
   DeleteRegion(obj: RegionModel) {
